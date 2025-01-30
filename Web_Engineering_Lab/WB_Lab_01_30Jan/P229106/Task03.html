@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Platform</title>
+
+    <style>
+      table {
+        font-family: "Times New Roman", Times, serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Welcome to Our Shopping Platform</h1>
+      </header>
+
+      <section class="products">
+        <h2>Our Products</h2>
+        <table>
+          <tr>
+            <th>Product Name</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Availability</th>
+            <th>Add to Cart</th>
+          </tr>
+          <tr>
+            <td>Wireless Headphones</td>
+            <td><img src="headphone.PNG" alt="Headphones" width="50" /></td>
+            <td>High-quality sound with noise cancellation</td>
+            <td>$89.99</td>
+            <td>In Stock</td>
+            <td><button class="button">Add to Cart</button></td>
+          </tr>
+          <tr>
+            <td>Smart Watch</td>
+            <td><img src="smartwatch.PNG" alt="Smart Watch" width="50" /></td>
+            <td>Track your fitness and notifications in style</td>
+            <td>$149.99</td>
+            <td>Out of Stock</td>
+            <td><button class="button" disabled>Add to Cart</button></td>
+          </tr>
+          <tr>
+            <td>Portable Speaker</td>
+            <td><img src="speaker.PNG" alt="Speaker" width="50" /></td>
+            <td>Perfect for outdoor adventures, waterproof and durable</td>
+            <td>$59.99</td>
+            <td>In Stock</td>
+            <td><button class="button">Add to Cart</button></td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="categories">
+        <h2>Explore Our Categories</h2>
+        <ul>
+          i. Electronics<br />
+          ii. Wearables<br />
+          iii. Home Appliances<br />
+          iv. Accessories<br />
+        </ul>
+      </section>
+
+      <section class="recommended">
+        <h2>Recommended Products</h2>
+        <ul>
+          <li>Wireless Earbuds</li>
+          <li>Smart Home Assistant</li>
+          <li>Bluetooth Keyboard</li>
+          <li>Fitness Tracker</li>
+        </ul>
+      </section>
+
+      <section class="map">
+        <h2>Embed Location from Google Map here</h2>
+        <div class="map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345098586!2d144.95373631531977!3d-37.81720637976553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf576b1f18b678b6a!2sGoogle!5e0!3m2!1sen!2sau!4v1607138757651!5m2!1sen!2sau"
+            width="600"
+            height="450"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
