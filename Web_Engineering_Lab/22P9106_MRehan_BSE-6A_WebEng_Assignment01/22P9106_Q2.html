@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Processor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #ffffff;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            width: 400px;
+            border: 1px solid #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            background: #ffffff;
+            color: #444;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        button:hover {
+            background: #f5f5f5;
+            border-color: #d0d0d0;
+            color: #222;
+        }
+
+        button:active {
+            background: #eee;
+            transform: translateY(1px);
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fafafa;
+            border-radius: 5px;
+            font-family: monospace;
+            color: #444;
+            border: 1px solid #f0f0f0;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <!--just so it looks good i am adding some css,
+    so it doesnt look that boring when you evalute it -->
+    <div class="container">
+        <h1>Array Processor</h1>
+        <button onclick="showResult(double)">Double Values</button>
+        <button onclick="showResult(square)">Square Values</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        // this functions is proccesing our array using a callback function
+        function processArray(arr, callback) {
+        // using the map to create a new array and just apply the callback function on the each element of the array
+            return arr.map(callback);
+        }
+
+        // this method is just doubling the numbers
+
+        function double(num) {
+            return num * 2;
+        }
+
+        // this method is just squaring the numbers
+        function square(num) {
+            return num * num;
+        }
+
+        // our testing array
+        const numbers = [10, 5, 8, 2, 6];
+
+        // this fuction will show the results to the html page
+        // first calling the processArray function with the given call back functions,
+        // stores the result into the result var and then
+        // just finds the result with its id and and sets the input and
+        // output both to be shown, using the template liberals like ` for
+        // the string formatting and just display it.
+
+        function showResult(callback) {
+            const result = processArray(numbers, callback);
+            document.getElementById('result').textContent =
+                `Input: [${numbers}]\nOutput: [${result}]`;
+        }
+
+        // displaying the result of the calculations
+        showResult(double);
+    </script>
+</body>
+</html>

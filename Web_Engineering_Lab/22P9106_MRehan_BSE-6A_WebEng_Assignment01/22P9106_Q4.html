@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Name List Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+
+        .input-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        #nameInput {
+            flex-grow: 1;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        #nameInput:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+        }
+
+        #addButton {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        #addButton:hover {
+            background-color: #0056b3;
+        }
+
+        #addButton:active {
+            transform: scale(0.95);
+        }
+
+        #nameList {
+            list-style: none;
+            padding: 0;
+        }
+
+        #nameList li {
+            background-color: white;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        #nameList li:hover {
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body>
+    <!--just so it looks good i am adding some css,
+    so it doesnt look that boring when you evalute it -->
+    <div class="input-container">
+        <input type="text" id="nameInput" placeholder="Enter name">
+        <button id="addButton">Add Name</button>
+    </div>
+    <ul id="nameList"></ul>
+
+    <script>
+        const nameInput = document.getElementById('nameInput');
+        const addButton = document.getElementById('addButton');
+        const nameList = document.getElementById('nameList');
+
+        // the method to add the names to our list
+        function addingName() {
+            const name = nameInput.value.trim();
+            if (name !== '') {
+                const li = document.createElement('li');
+                li.textContent = name;
+                nameList.appendChild(li);
+                nameInput.value = '';
+            }
+        }
+
+        // event when user clicks the button
+        addButton.addEventListener('click', addingName);
+
+        // added this so user can enter the name by pressing the Enter button
+        nameInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                addingName();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Processor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #ffffff;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            width: 600px;
+            border: 1px solid #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            background: #ffffff;
+            color: #444;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        button:hover {
+            background: #f5f5f5;
+            border-color: #d0d0d0;
+            color: #222;
+        }
+
+        button:active {
+            background: #eee;
+            transform: translateY(1px);
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .result li {
+            padding: 12px 15px;
+            background: #fafafa;
+            border: 1px solid #f0f0f0;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            color: #444;
+            transition: background 0.2s ease;
+        }
+
+        .result li:hover {
+            background: #f5f5f5;
+        }
+
+        .result-title {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Processor</h1>
+        <button onclick="displaySorted()">Students Sorted by Marks</button>
+        <button onclick="displayHighScorers()">Marks Higher then 80</button>
+        <button onclick="displayOlderThan21()">Age Older then 21</button>
+        <ul id="result" class="result">
+            <div id="result-title" class="result-title"></div>
+        </ul>
+    </div>
+
+    <script>
+        // initialing our student array
+        const students = [
+            { name: "Ali", age: 22, marks: 85 },
+            { name: "Ayesha", age: 20, marks: 92 },
+            { name: "Bilal", age: 23, marks: 78 },
+            { name: "Ibrahim", age: 22, marks: 76 },
+            { name: "Usama", age: 21, marks: 80 }
+        ];
+
+        // the function to sort students by marks in a descending order
+        function sortByMarksDescending(arr) {
+        // it is just doing the spread creating copy, sort comparing the marks
+            return [...arr].sort((a, b) => b.marks - a.marks);
+        }
+
+        // the function to get names of students with marks more then the 80
+        function getHighScorers(arr) {
+            return arr
+            // just keeping the students with marks more then the 80
+                .filter(student => student.marks > 80)
+                 // and extract only the names to make it look good
+                .map(student => student.name);
+        }
+
+        // the fuunction to get students older than 21 of age
+        function getOlderThan21(arr) {
+        // just keeping the students with age older then 21
+            return arr.filter(student => student.age > 21);
+        }
+
+        // our helper function to clear and update the list
+        function updateList(title, items, formatItem) {
+            const resultList = document.getElementById('result');
+            const resultTitle = document.getElementById('result-title');
+
+            // clearing the existing list items except the title
+            resultList.innerHTML = '<div id="result-title" class="result-title"></div>';
+
+            // setting the title
+            resultTitle.textContent = title;
+
+            // adding new items
+            items.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = formatItem(item);
+                resultList.appendChild(li);
+            });
+        }
+
+        // display function for sorted results to be shown
+        function displaySorted() {
+            const sorted = sortByMarksDescending(students);
+            updateList(
+                'Sorted by Marks in descending order',
+                sorted,
+                student => `${student.name} - Age: ${student.age}, Marks: ${student.marks}`
+            );
+        }
+
+        // display function for students with high score then 80
+        function displayHighScorers() {
+            const highScorers = getHighScorers(students);
+            updateList(
+                'Students with marks more then 80',
+                highScorers,
+                name => name
+            );
+        }
+
+        // display function for older students then 21 of age
+        function displayOlderThan21() {
+            const older = getOlderThan21(students);
+            updateList(
+                'Students with age older than 21',
+                older,
+                student => `${student.name} - Age: ${student.age}, Marks: ${student.marks}`
+            );
+        }
+
+        // display fuction
+        displaySorted();
+    </script>
+</body>
+</html>
